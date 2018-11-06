@@ -8,6 +8,7 @@ package com.gettaxi.benzack.gettaxi5779_5030_8867.controlloer;
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.layout);
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -25,27 +26,28 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gettaxi.benzack.gettaxi5779_5030_8867.Manifest;
+import com.gettaxi.benzack.gettaxi5779_5030_8867.DistanceActivity;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 
+import org.shredzone.commons.suncalc.SunTimes;
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import com.forrestguice.suntimeswidget.settings.WidgetTimezones;
-//import org.shredzone.commons.suncalc.SunTimes;
+
+
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    final int PLACE_PICKER_REQUEST = 1;
 
     private TextView locationTextView;
     private Button getLocationButton;
     private Button stopUpdateButton;
-    private Button distanceButton;
-    private Button searchButton;
+    private  Button distanceButton;
+    private  Button searchButton;
 
     // Acquire a reference to the system Location Manager
     LocationManager locationManager;
@@ -56,6 +58,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
     private void findViews() {
+
 
 
         locationTextView = (TextView) findViewById(R.id.locationTextView);
@@ -102,7 +105,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
 
-    void showSunTimes(double lat, double lng) {
+    void showSunTimes( double lat, double lng)
+    {
         Date date = new Date();// date of calculation
 
         SunTimes times = SunTimes.compute()
@@ -129,6 +133,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
 
+
+
+
     public String getPlace(Location location) {
 
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
@@ -144,8 +151,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 return stateName + "\n" + cityName + "\n" + countryName;
             }
 
-            return "no place: \n (" + location.getLongitude() + " , " + location.getLatitude() + ")";
-        } catch (
+            return "no place: \n ("+location.getLongitude()+" , "+location.getLatitude()+")";
+        }
+        catch(
                 IOException e)
 
         {
@@ -153,7 +161,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         return "IOException ...";
     }
-
     @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -183,11 +190,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
             stopUpdateButton.setEnabled(false);
             getLocationButton.setEnabled(true);
         }
-        if (v == distanceButton) {
-            startActivity(new Intent(this, DistanceActivity.class));
+        if(v==distanceButton)
+        {
+            startActivity(new Intent(this,DistanceActivity.class));
         }
 
-        if (v == searchButton) {
+        if(v==searchButton)
+        {
 
             PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
 
@@ -211,10 +220,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                 SunTimes times = SunTimes.compute()
                         .on(date)       // set a date
-                        .at(place.getLatLng().latitude, place.getLatLng().longitude)   // set a location
+                        .at(place.getLatLng().latitude,place.getLatLng().longitude)   // set a location
                         .execute();     // get the results
-                toastMsg += "\nSunrise: " + times.getRise();
-                toastMsg += "\nSunset: " + times.getSet();
+                toastMsg+= "\nSunrise: " + times.getRise();
+                toastMsg+= "\nSunset: " + times.getSet();
 
 
                 Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
@@ -223,7 +232,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         }
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

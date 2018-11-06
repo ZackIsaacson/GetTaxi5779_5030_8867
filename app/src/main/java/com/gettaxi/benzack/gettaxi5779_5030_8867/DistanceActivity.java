@@ -120,4 +120,3 @@ public class DistanceActivity extends Activity implements View.OnClickListener {
     }
 
 }
-
