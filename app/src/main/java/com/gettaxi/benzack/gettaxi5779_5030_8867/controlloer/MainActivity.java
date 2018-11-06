@@ -1,31 +1,6 @@
 package com.gettaxi.benzack.gettaxi5779_5030_8867.controlloer;
 
-/*import android.app.Activity;
-import android.location.Location;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.gettaxi.benzack.gettaxi5779_5030_8867.R;
-import com.gettaxi.benzack.gettaxi5779_5030_8867.model.datasource.Firebase_DBManager;
-import com.gettaxi.benzack.gettaxi5779_5030_8867.model.entities.Ride;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
-
-import java.util.HashMap;
 
 //public class MainActivity extends Activity {
 //    @Override
@@ -33,9 +8,6 @@ import java.util.HashMap;
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.layout);
 
-*/
-
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -53,18 +25,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gettaxi.benzack.gettaxi5779_5030_8867.Manifest;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 
-import org.shredzone.commons.suncalc.SunTimes;
-
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
+import com.forrestguice.suntimeswidget.settings.WidgetTimezones;
+//import org.shredzone.commons.suncalc.SunTimes;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     final int PLACE_PICKER_REQUEST = 1;
